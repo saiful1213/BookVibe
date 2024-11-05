@@ -1,8 +1,11 @@
+import Banner from "@/components/Banner/Banner";
+import Books from "@/components/Books/Books";
 
 const Home = () => {
     return (
         <div>
-            <h1 className='text-2xl font-bold'>Home </h1>
+            <Banner />
+            <Books />
         </div>
     )
 }

@@ -10,12 +10,13 @@ import {
 }
     from "../ui/sheet";
 import NavLinks from "./NavLinks";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <nav className="flex justify-between py-5 px-2 max-w-6xl mx-auto items-center">
             {/* nav start */}
-            <h1 className="order-2 md:order-1 text-3xl font-bold">Book Vibe</h1>
+            <Link to={'/'}><h1 className="order-2 md:order-1 text-3xl font-bold">Book Vibe</h1></Link>
             {/* nav center */}
             {/* large device */}
             <div className="hidden md:order-2 md:flex">

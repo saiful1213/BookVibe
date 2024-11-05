@@ -1,3 +1,4 @@
+import BookDetail from "@/components/BookDetail/BookDetail";
 import DashBoard from "@/pages/DashBoard/DashBoard";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 import Home from "@/pages/Home/Home";
@@ -13,6 +14,11 @@ const Routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/book/:bookId',
+                loader: () => fetch(`/booksData.json`),
+                element: <BookDetail></BookDetail>
             },
             {
                 path: '/dashboard',
