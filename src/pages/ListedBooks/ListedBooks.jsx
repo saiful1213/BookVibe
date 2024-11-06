@@ -4,10 +4,23 @@ import { getFromLS } from "@/utils/readList";
 import { useEffect, useState } from "react";
 import Book from "@/components/Book/Book";
 import { getFromLocalStorage } from "@/utils/wishList";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+
 
 const ListedBooks = () => {
     const [readList, setReadList] = useState([]);
     const [wishList, setWishList] = useState([]);
+    const [sort, setSort] = useState('');
     const allBooks = useLoaderData();
 
     // read list book
@@ -28,9 +41,32 @@ const ListedBooks = () => {
         setWishList(wishListBooks);
     }, [])
 
+    // sort read book
+    const sortBookList = sortType => {
+        setSort(sortType);
+        if (sortType === 'Ratings') {
+            const sortedBooks = [...readList].sort((b, a) => a.rating - b.rating);
+            setReadList(sortedBooks);
+        }
+        else if (sortType === 'Number of Pages') {
+            const sortedBooks = [...readList].sort((a, b) => b.totalPages - a.totalPages);
+            setReadList(sortedBooks);
+        }
+    }
+
     return (
         <div>
             <h1 className='text-4xl text-center font-bold my-10'>Books</h1>
+
+            <div className="flex justify-center mb-10">
+                <DropdownMenu>
+                    <DropdownMenuTrigger><Button className="bg-[#23BE0A]">{`Sort By ${sort && sort}`} <ChevronDown /></Button></DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuItem onClick={() => sortBookList('Ratings')}>Ratings</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => sortBookList('Number of Pages')}>Number of Pages</DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </div>
 
             <Tabs defaultValue="readList">
                 <TabsList>

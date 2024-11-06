@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 
 const Book = ({ book }) => {
-    const { bookId, bookName, author, image, rating, category, tags } = book;
+    const { bookId, bookName, author, image, rating, category, tags, totalPages } = book;
 
     return (
         <Link to={`/book/${bookId}`}>
@@ -32,6 +32,9 @@ const Book = ({ book }) => {
                 </CardContent>
                 <CardFooter className="flex justify-between border-t border-dashed border-[#13131326] pt-5 text-[#131313cc] font-medium">
                     <p>{category}</p>
+                    <div>
+                        Total Pages: {totalPages}
+                    </div>
                     <div className="flex items-center gap-2">
                         <p>{rating}</p>
                         <span className="cursor-pointer"><Star /></span>
