@@ -1,7 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
-import { getFromLocalStorage, SaveToLocalStorage } from "@/utils/readList";
+import { getFromLS, SaveToLocalStorage } from "@/utils/readList";
 import { saveToLocalStorage } from "@/utils/wishList";
+import { toast } from "react-toastify";
 
 const BookDetail = () => {
     const { bookId } = useParams();
@@ -11,14 +12,14 @@ const BookDetail = () => {
     const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = currentBook;
 
     const handleMarkAsRead = () => {
-        const savedBooks = getFromLocalStorage();
+        const savedBooks = getFromLS();
         const isExist = savedBooks.find(savedBookId => savedBookId === bookId);
         if (isExist) {
-            return alert('book already exist')
+            return toast.error('book already exist')
         }
 
         SaveToLocalStorage(bookId);
-        alert('book add to read list successfully!!');
+        toast.success('book add to read list successfully!!');
     }
 
     const handleWishList = () => {

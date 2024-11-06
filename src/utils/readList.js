@@ -16,4 +16,4 @@ const SaveToLocalStorage = bookId => {
     localStorage.setItem('readList', JSON.stringify(updatedList));
 }
 
-export { getFromLocalStorage, SaveToLocalStorage };
+export { getFromLocalStorage as getFromLS, SaveToLocalStorage };

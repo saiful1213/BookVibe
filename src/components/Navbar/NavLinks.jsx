@@ -5,9 +5,8 @@ const NavLinks = ({ isSmallDevie }) => {
 
     const links = [
         { id: 1, name: 'Home', path: '/' },
-        { id: 2, name: 'Listed Books', path: '/about' },
+        { id: 2, name: 'Listed Books', path: '/listedBooks' },
         { id: 3, name: 'Dashboard', path: '/dashboard' },
-        { id: 4, name: 'Faq', path: '/faq' },
     ]
 
     return (

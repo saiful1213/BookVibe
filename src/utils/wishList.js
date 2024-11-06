@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 // get from LS
 const getFromLocalStorage = () => {
@@ -16,12 +17,12 @@ const saveToLocalStorage = wishListId => {
     const wishListIds = getFromLocalStorage();
     // check book is exist
     if (wishListIds.includes(wishListId)) {
-        return alert('book already in wishlist')
+        return toast.error('book already in wishlist')
     }
     else {
         wishListIds.push(wishListId);
         localStorage.setItem('wishList', JSON.stringify(wishListIds));
-        alert('book added in wish list successfully!!')
+        toast.success('book added in wish list successfully!!')
     }
 };
 
